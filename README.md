@@ -1,4 +1,5 @@
-**:warning: This project is now archived and no longer supported. Please contact me if you maintain a replacement and would like me to link to your repo.**
+**This project is the fork of [oznu/docker-guacamole](https://github.com/oznu/docker-guacamole) with latest softwares.**
+
 
 # Docker Guacamole
 
@@ -73,7 +74,7 @@ The default username is `guacadmin` with password `guacadmin`.
 Mapped volumes behave differently when running Docker for Windows and you may encounter some issues with PostgreSQL file system permissions. To avoid these issues, and still retain your config between container upgrades and recreation, you can use the local volume driver, as shown in the `docker-compose.yml` example below. When using this setup be careful to gracefully stop the container or data may be lost.
 
 ```yml
-version: "2"
+version: "3"
 services:
   guacamole:
     image: oznu/guacamole
