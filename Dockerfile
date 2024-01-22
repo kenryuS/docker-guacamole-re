@@ -1,11 +1,11 @@
 FROM library/tomcat:9-jre11
 
 ENV ARCH=x86_64 \
-  GUAC_VER=1.5.3 \
+  GUAC_VER=1.5.4 \
   GUACAMOLE_HOME=/app/guacamole \
   PG_MAJOR=14 \
-  SSIXOVERLAY_VER=3.1.6.0 \
-  PGJDBC_VER=42.6.0 \
+  SSIXOVERLAY_VER=3.1.6.2 \
+  PGJDBC_VER=42.7.1 \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db
