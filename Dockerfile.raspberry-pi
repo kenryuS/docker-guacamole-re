@@ -1,11 +1,11 @@
 FROM arm32v7/tomcat:9-jre11
 
 ENV ARCH=armhf \
-  GUAC_VER=1.5.4 \
+  GUAC_VER=1.5.5 \
   GUACAMOLE_HOME=/app/guacamole \
   PG_MAJOR=14 \
   SSIXOVERLAY_VER=3.1.6.2 \
-  PGJDBC_VER=42.7.2 \
+  PGJDBC_VER=42.7.3 \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db
@@ -18,8 +18,7 @@ RUN apt-get update && apt-get install -y \
     libssh2-1-dev libtelnet-dev libvncserver-dev \
     libpulse-dev libssl-dev libvorbis-dev libwebp-dev libwebsockets-dev \
     ghostscript postgresql-${PG_MAJOR} \
-    xz-utils gcc build-essential\
-  && rm -rf /var/lib/apt/lists/*
+    xz-utils gcc build-essential
 
 # Apply the s6-overlay
 
@@ -74,6 +73,8 @@ RUN set -xe \
     && cp guacamole-${i}-${GUAC_VER}/guacamole-${i}-${GUAC_VER}.jar ${GUACAMOLE_HOME}/extensions-available/ \
     && rm -rf guacamole-${i}-${GUAC_VER} guacamole-${i}-${GUAC_VER}.tar.gz \
   ;done
+
+RUN rm -rf /var/lib/apt/lists/*
 
 ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
