@@ -4,11 +4,16 @@ ENV ARCH=armhf \
   GUAC_VER=1.5.5 \
   GUACAMOLE_HOME=/app/guacamole \
   PG_MAJOR=14 \
-  SSIXOVERLAY_VER=3.1.6.2 \
+  SSIXOVERLAY_VER=3.2.0.0 \
   PGJDBC_VER=42.7.3 \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db
+
+WORKDIR /
+
+COPY root/app /app
+COPY root/etc /etc
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -38,8 +43,7 @@ RUN mkdir -p ${GUACAMOLE_HOME} \
 WORKDIR ${GUACAMOLE_HOME}
 
 # Link FreeRDP to where guac expects it to be
-RUN [ "$ARCH" = "armhf" ] && ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp || exit 0
-RUN [ "$ARCH" = "amd64" ] && ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp || exit 0
+RUN ln -s /usr/local/lib/freerdp /usr/lib/arm-linux-gnueabihf/freerdp || exit 0
 
 # Install guacamole-server
 RUN curl -SLO "https://dlcdn.apache.org/guacamole/${GUAC_VER}/source/guacamole-server-${GUAC_VER}.tar.gz" \
@@ -80,8 +84,6 @@ ENV PATH=/usr/lib/postgresql/${PG_MAJOR}/bin:$PATH
 ENV GUACAMOLE_HOME=/config/guacamole
 
 WORKDIR /config
-
-COPY root /
 
 RUN chmod +x /etc/cont-init.d/* \
   && chmod +x /etc/services.d/**/run

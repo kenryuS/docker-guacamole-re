@@ -1,6 +1,6 @@
-FROM library/tomcat:9-jre11
+FROM arm64v8/tomcat:9-jre11
 
-ENV ARCH=x86_64 \
+ENV ARCH=aarch64 \
   GUAC_VER=1.5.5 \
   GUACAMOLE_HOME=/app/guacamole \
   PG_MAJOR=14 \
@@ -43,7 +43,7 @@ RUN mkdir -p ${GUACAMOLE_HOME} \
 WORKDIR ${GUACAMOLE_HOME}
 
 # Link FreeRDP to where guac expects it to be
-RUN ln -s /usr/local/lib/freerdp /usr/lib/x86_64-linux-gnu/freerdp || exit 0
+RUN ln -s /usr/local/lib/freerdp /usr/lib/arm64-linux-gnueabihf/freerdp || exit 0
 
 # Install guacamole-server
 RUN curl -SLO "https://dlcdn.apache.org/guacamole/${GUAC_VER}/source/guacamole-server-${GUAC_VER}.tar.gz" \
@@ -91,3 +91,4 @@ RUN chmod +x /etc/cont-init.d/* \
 EXPOSE 8080
 
 ENTRYPOINT [ "/init" ]
+
