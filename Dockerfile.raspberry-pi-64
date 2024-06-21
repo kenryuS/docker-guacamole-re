@@ -43,7 +43,7 @@ RUN mkdir -p ${GUACAMOLE_HOME} \
 WORKDIR ${GUACAMOLE_HOME}
 
 # Link FreeRDP to where guac expects it to be
-RUN ln -s /usr/local/lib/freerdp /usr/lib/arm64-linux-gnueabihf/freerdp || exit 0
+RUN ln -s /usr/local/lib/freerdp /usr/lib/aarch64-linux-gnu/freerdp || exit 0
 
 # Install guacamole-server
 RUN curl -SLO "https://dlcdn.apache.org/guacamole/${GUAC_VER}/source/guacamole-server-${GUAC_VER}.tar.gz" \

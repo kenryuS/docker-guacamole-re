@@ -20,7 +20,7 @@ docker run \
   kenryus/docker-guacamole
 ```
 
-## Raspberry Pi / ARMv6
+## Raspberry Pi(32-bit) / armhf
 
 This image will also allow you to run [Apache Guacamole](https://guacamole.apache.org/) on a Raspberry Pi or other Docker-enabled ARMv5/6/7/8 devices by using the `armhf` tag.
 
@@ -29,6 +29,17 @@ docker run \
   -p 8080:8080 \
   -v </path/to/config>:/config \
   kenryus/docker-guacamole:armhf
+```
+
+### Raspberry Pi(64-bit) / arm64(aarch64)
+
+This image varient is for 64 bit arm. You can use this with `arm64` tag.
+
+```
+docker run \
+  -p 8080:8080 \
+  -v </path/to/config>:/config \
+  kenryus/docker-guacamole:arm64
 ```
 
 ## Parameters

@@ -19,7 +19,7 @@ public-test-armhf:
 	docker buildx build --push --platform=linux/armhf --progress plain --tag kenryus/docker-guacamole:test-$(VERSION)-armhf -f ./Dockerfile.raspberry-pi-32 .
 
 public-test-arm64:
-	docker buildx build --push --platform=linux/arm64 --progress plain --tag kenryus/docker-guacamole:test-$(VERSION)-armhf -f ./Dockerfile.raspberry-pi-64 .
+	docker buildx build --push --platform=linux/arm64 --progress plain --tag kenryus/docker-guacamole:test-$(VERSION)-arm64 -f ./Dockerfile.raspberry-pi-64 .
 
 build-amd64:
 	docker buildx build --push --platform=linux/amd64 --tag kenryus/docker-guacamole:latest .
