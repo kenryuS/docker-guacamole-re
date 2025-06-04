@@ -1,11 +1,11 @@
-FROM library/tomcat:9-jre11
+FROM library/tomcat:9-jre11-temurin-noble
 
 ENV ARCH=x86_64 \
   GUAC_VER=1.5.5 \
   GUACAMOLE_HOME=/app/guacamole \
-  PG_MAJOR=14 \
-  SSIXOVERLAY_VER=3.2.0.0 \
-  PGJDBC_VER=42.7.3 \
+  PG_MAJOR=16 \
+  SSIXOVERLAY_VER=3.2.1.0 \
+  PGJDBC_VER=42.7.6 \
   PGDATA=/config/postgres \
   POSTGRES_USER=guacamole \
   POSTGRES_DB=guacamole_db
@@ -19,10 +19,10 @@ COPY root/etc /etc
 RUN apt-get update && apt-get install -y \
     libcairo2-dev libjpeg-turbo8-dev libpng-dev \
     libossp-uuid-dev libavcodec-dev libavutil-dev \
-    libswscale-dev freerdp2-dev libfreerdp-client2-2 libpango1.0-dev \
+    libswscale-dev freerdp2-dev libfreerdp-client3-3 libpango1.0-dev \
     libssh2-1-dev libtelnet-dev libvncserver-dev \
     libpulse-dev libssl-dev libvorbis-dev libwebp-dev libwebsockets-dev \
-    ghostscript postgresql-${PG_MAJOR} \
+    ghostscript postgresql \
     xz-utils gcc build-essential
 
 # Apply the s6-overlay

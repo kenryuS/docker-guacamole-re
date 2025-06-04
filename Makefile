@@ -34,17 +34,17 @@ build-arm64:
 	docker buildx build --push --platform=linux/arm64 --tag kenryus/docker-guacamole:$(VERSION)-arm64 -f ./Dockerfile.raspberry-pi-64 .
 
 test-build-amd64-local:
-	/bin/rm -drf build/amd64
+	rm -drf build/amd64
 	mkdir -p build/amd64
 	docker buildx build --output=type=local,dest=build/amd64 --platform=linux/amd64 .
 
 test-build-armhf-local:
-	/bin/rm -drf build/armhf
+	rm -drf build/armhf
 	mkdir -p build/armhf
 	docker buildx build --output=type=local,dest=build/armhf --platform=linux/armhf -f ./Dockerfile.raspberry-pi-32 .
 
 test-build-arm64-local:
-	/bin/rm -drf build/arm64
+	rm -drf build/arm64
 	mkdir -p build/arm64
 	docker buildx build --output=type=local,dest=build/arm64 --platform=linux/arm64 -f ./Dockerfile.raspberry-pi-64 .
 
