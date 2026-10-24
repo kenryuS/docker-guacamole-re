@@ -69,8 +69,10 @@ Currently the available extensions are:
 * auth-ldap - [LDAP Authentication](https://guacamole.apache.org/doc/gug/ldap-auth.html)
 * auth-duo - [Duo two-factor authentication](https://guacamole.apache.org/doc/gug/duo-auth.html)
 * auth-header - [HTTP header authentication](https://guacamole.apache.org/doc/gug/header-auth.html)
-* auth-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
-* auth-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* auth-sso-cas - [CAS Authentication](https://guacamole.apache.org/doc/gug/cas-auth.html)
+* auth-sso-openid - [OpenID Connect authentication](https://guacamole.apache.org/doc/gug/openid-auth.html)
+* auth-sso-saml - [SAML authentication](https://guacamole.apache.org/doc/gug/saml-auth.html)
+* auth-sso-ssl - [Smart cards/Certificates authentication](https://guacamole.apache.org/doc/gug/ssl-auth.html)
 * auth-totp - [TOTP two-factor authentication](https://guacamole.apache.org/doc/gug/totp-auth.html)
 * auth-quickconnect - [Ad-hoc connections extension](https://guacamole.apache.org/doc/gug/adhoc-connections.html)
 
